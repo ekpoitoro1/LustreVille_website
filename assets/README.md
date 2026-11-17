@@ -70,9 +70,28 @@ Note that GitHub's file view and "Raw" links show source code, not the rendered 
 
 Vercel serves `index.html` from the repository root. Every push to `main` redeploys the production site, and every pull request or other branch gets its own preview URL. No `vercel.json` is needed.
 
+## Contact forms (Formspree)
+
+The Enquiry and Enrol forms post asynchronously (Fetch API) to `https://formspree.io/f/xppddldy`. The endpoint is set once, in `js/script.js` (`FORMSPREE_ENDPOINT`), and repeated as the `action` of each form in `index.html` so the forms still work if JavaScript fails.
+
+- Every field has a `name` attribute, so it appears in the email. The email input is named `email`, so Formspree can use it as the reply-to address.
+- Each email also carries a `_subject` line and a `form_type` field (Enquiry or Enrolment). Multiple selected subjects are sent as one comma-separated value.
+- While a request is running the button is disabled and shows "Sending...", so a double click cannot send twice.
+- On success the form clears and the green confirmation message appears. On failure a red message appears and the entered details are kept so the visitor can retry.
+
+**Test before publishing**
+
+1. Run the site locally (see Run locally) and submit each form with real-looking details.
+2. The first submission to a new Formspree form asks you to confirm your email address. Check your inbox (and spam), click the confirmation link, then submit again.
+3. Confirm the email arrives, lists every field, and that replying goes to the address you typed in the form.
+4. Check Formspree's dashboard under the form's Submissions tab.
+5. Test the error message: turn off your internet (or use browser DevTools, Network, Offline) and submit. A red message should appear and your details should stay in the form.
+6. Test on a phone: use your computer's local network address, or the Vercel preview URL.
+7. If submissions fail with a spam or reCAPTCHA error, open the form's settings in Formspree and adjust the spam protection options.
+
 ## Current behaviour and limits
 
-- Forms validate in the browser and show a success message, but **nothing is stored or sent**. Connect a backend before using them for real enquiries.
+- Both forms (Enquiry and Enrol) send their submissions to your email through Formspree. Nothing is stored on the website itself; submissions live in your inbox and Formspree dashboard.
 - The chat assistant is rule-based (keyword replies), not an AI model, and conversations are not saved.
 - Tutors, blog posts and testimonials are static content written in `index.html`.
 - All pages share one URL, because navigation happens in JavaScript. Refreshing always returns to Home.

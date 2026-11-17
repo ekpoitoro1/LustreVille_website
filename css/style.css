@@ -290,6 +290,12 @@
     background:#eaf5ea;border:1px solid #b9dcb9;color:#2b5c2b;font-size:.9rem;font-weight:600;
   }
   .success-msg.show{display:block;}
+  .error-msg{
+    display:none;margin-top:16px;padding:14px 16px;border-radius:10px;
+    background:#fdecea;border:1px solid #f0b8b2;color:#8a1f17;font-size:.9rem;font-weight:600;
+  }
+  .error-msg.show{display:block;}
+  .btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
 
   .steps-mini{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
   .steps-mini span{

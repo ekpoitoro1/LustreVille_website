@@ -369,11 +369,11 @@
         <p style="font-size:.85rem;">Guardians, pupils, and tutors applying to teach are all welcome to enquire here.</p>
       </div>
 
-      <form id="enquiryForm" onsubmit="return handleFormSubmit(event,'enquirySuccess')">
+      <form id="enquiryForm" action="https://formspree.io/f/xppddldy" method="POST" onsubmit="return handleFormSubmit(event,'enquirySuccess')">
         <div class="form-row">
-          <div class="field"><label for="eq-name">Your name</label><input id="eq-name" required placeholder="Full name"></div>
+          <div class="field"><label for="eq-name">Your name</label><input id="eq-name" name="name" required placeholder="Full name"></div>
           <div class="field"><label for="eq-relation">You are the</label>
-            <select id="eq-relation">
+            <select id="eq-relation" name="relation">
               <option>Guardian / Parent</option>
               <option>Pupil (18+)</option>
               <option>Prospective tutor</option>
@@ -382,21 +382,21 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="eq-email">Email address</label><input id="eq-email" type="email" required placeholder="you@example.com"></div>
-          <div class="field"><label for="eq-country">Country / Time zone</label><input id="eq-country" required placeholder="e.g. Nigeria, WAT"></div>
+          <div class="field"><label for="eq-email">Email address</label><input id="eq-email" name="email" type="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="eq-country">Country / Time zone</label><input id="eq-country" name="country" required placeholder="e.g. Nigeria, WAT"></div>
         </div>
         <div class="form-row">
           <div class="field"><label for="eq-subject">Subject of interest</label>
-            <select id="eq-subject">
+            <select id="eq-subject" name="subject">
               <option>English</option><option>Mathematics</option><option>French</option>
               <option>Information Technology</option><option>Science</option><option>Data Science</option>
               <option>Coding &amp; Programming</option><option>Not sure yet</option>
             </select>
           </div>
-          <div class="field"><label for="eq-class">Pupil's current class / grade</label><input id="eq-class" placeholder="e.g. Class 4"></div>
+          <div class="field"><label for="eq-class">Pupil's current class / grade</label><input id="eq-class" name="pupil_class" placeholder="e.g. Class 4"></div>
         </div>
-        <div class="field"><label for="eq-message">Your message</label><textarea id="eq-message" required placeholder="Tell us a bit about what you're looking for..."></textarea></div>
-        <div class="checkbox-row"><input type="checkbox" required id="eq-consent"><label for="eq-consent">I agree to be contacted by Meridian Learning Academy about this enquiry.</label></div>
+        <div class="field"><label for="eq-message">Your message</label><textarea id="eq-message" name="message" required placeholder="Tell us a bit about what you're looking for..."></textarea></div>
+        <div class="checkbox-row"><input type="checkbox" required id="eq-consent" name="consent"><label for="eq-consent">I agree to be contacted by Meridian Learning Academy about this enquiry.</label></div>
         <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Send Enquiry</button>
         <div class="success-msg" id="enquirySuccess">Thank you — your enquiry has been received. A member of our team will respond within 24 hours.</div>
       </form>
@@ -428,21 +428,21 @@
         <p style="font-size:.85rem;">Questions first? <a href="#" style="color:var(--gold-400);text-decoration:underline;" onclick="showPage('enquiry');return false;">Send an enquiry instead</a>.</p>
       </div>
 
-      <form id="enrolForm" onsubmit="return handleFormSubmit(event,'enrolSuccess')">
+      <form id="enrolForm" action="https://formspree.io/f/xppddldy" method="POST" onsubmit="return handleFormSubmit(event,'enrolSuccess')">
         <div class="form-row">
-          <div class="field"><label for="en-pupil">Pupil's full name</label><input id="en-pupil" required placeholder="Pupil's name"></div>
-          <div class="field"><label for="en-class">Pupil's class / grade</label><input id="en-class" required placeholder="e.g. Class 6"></div>
+          <div class="field"><label for="en-pupil">Pupil's full name</label><input id="en-pupil" name="pupil_name" required placeholder="Pupil's name"></div>
+          <div class="field"><label for="en-class">Pupil's class / grade</label><input id="en-class" name="pupil_class" required placeholder="e.g. Class 6"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="en-guardian">Guardian's name</label><input id="en-guardian" placeholder="If pupil is under 18"></div>
-          <div class="field"><label for="en-email">Contact email</label><input id="en-email" type="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="en-guardian">Guardian's name</label><input id="en-guardian" name="guardian_name" placeholder="If pupil is under 18"></div>
+          <div class="field"><label for="en-email">Contact email</label><input id="en-email" name="email" type="email" required placeholder="you@example.com"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="en-phone">Phone / WhatsApp</label><input id="en-phone" required placeholder="+ country code and number"></div>
-          <div class="field"><label for="en-country">Country &amp; time zone</label><input id="en-country" required placeholder="e.g. Philippines, PST"></div>
+          <div class="field"><label for="en-phone">Phone / WhatsApp</label><input id="en-phone" name="phone" required placeholder="+ country code and number"></div>
+          <div class="field"><label for="en-country">Country &amp; time zone</label><input id="en-country" name="country" required placeholder="e.g. Philippines, PST"></div>
         </div>
         <div class="field"><label for="en-subjects">Subject(s) to enrol in</label>
-          <select id="en-subjects" multiple size="6" style="height:auto;">
+          <select id="en-subjects" name="subjects" multiple size="6" style="height:auto;">
             <option>English</option><option>Mathematics</option><option>French</option>
             <option>Information Technology</option><option>Science</option><option>Data Science</option>
             <option>Coding &amp; Programming</option><option>Public Speaking &amp; Study Skills</option>
@@ -450,12 +450,12 @@
         </div>
         <div class="form-row">
           <div class="field"><label for="en-format">Class format</label>
-            <select id="en-format"><option>One-to-one</option><option>Small group (2–4 pupils)</option><option>Not sure — advise me</option></select>
+            <select id="en-format" name="class_format"><option>One-to-one</option><option>Small group (2–4 pupils)</option><option>Not sure — advise me</option></select>
           </div>
-          <div class="field"><label for="en-schedule">Preferred days / times</label><input id="en-schedule" placeholder="e.g. Weekday evenings"></div>
+          <div class="field"><label for="en-schedule">Preferred days / times</label><input id="en-schedule" name="preferred_schedule" placeholder="e.g. Weekday evenings"></div>
         </div>
-        <div class="field"><label for="en-notes">Anything else we should know?</label><textarea id="en-notes" placeholder="Learning goals, prior experience, exam boards, etc."></textarea></div>
-        <div class="checkbox-row"><input type="checkbox" required id="en-consent"><label for="en-consent">I confirm the details above are correct and agree to be contacted to complete enrolment.</label></div>
+        <div class="field"><label for="en-notes">Anything else we should know?</label><textarea id="en-notes" name="notes" placeholder="Learning goals, prior experience, exam boards, etc."></textarea></div>
+        <div class="checkbox-row"><input type="checkbox" required id="en-consent" name="consent"><label for="en-consent">I confirm the details above are correct and agree to be contacted to complete enrolment.</label></div>
         <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Submit Enrolment</button>
         <div class="success-msg" id="enrolSuccess">Thank you — your enrolment request has been received. We'll confirm tutor matching and scheduling within 24 hours.</div>
       </form>
